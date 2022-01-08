@@ -1,5 +1,4 @@
 // DECLARATIONS
-
 let myLibrary = [];
 let title;
 let author;
@@ -9,6 +8,10 @@ let newBook;
 let submit = document.querySelector("#submit");
 let card;
 const container = document.querySelector(".container");
+const myStorage = window.localStorage;
+let myBooks;
+
+
 // FUNCTIONS
 
 function Book(title, author, pages, read) {
@@ -32,12 +35,21 @@ function log(e) {
   e.preventDefault();
 }
 
-function display(e) {
+function display() {
   clear();
-  for (let i = 0; i < myLibrary.length; i++) {
-    card = document.createElement("div");
-    card.innerText = myLibrary[i].info();
-    container.appendChild(card);
+  
+  myStorage.setItem('books',JSON.stringify(myLibrary));
+  myBooks = JSON.parse(myStorage.getItem('books'));
+  console.log(myBooks)
+
+  if(myBooks && myBooks.length){
+
+    for (let i = 0; i < myBooks.length; i++) {
+      card = document.createElement("div");
+      // card.innerText = myBooks[i].info();
+      card.innerText = `${myBooks[i]['title']} by ${myBooks[i]['author']}, ${myBooks[i]['pages']} pages, ${myBooks[i]['read']}`
+      container.appendChild(card);
+    }
   }
 }
 
@@ -48,6 +60,7 @@ function clear() {
 function reset() {
   document.getElementById("myForm").reset();
 }
+
 
 // EVENT LISTENERS
 
