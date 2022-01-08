@@ -28,6 +28,7 @@ function log(e) {
   read = document.querySelector("#read").value;
   myLibrary.push(new Book(title, author, pages, read));
   display();
+  reset();
   e.preventDefault();
 }
 
@@ -43,6 +44,11 @@ function display(e) {
 function clear() {
   container.innerHTML = "";
 }
+
+function reset() {
+  document.getElementById("myForm").reset();
+}
+
 // EVENT LISTENERS
 
 submit.addEventListener("click", log);
