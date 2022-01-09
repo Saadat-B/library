@@ -1,38 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
     <title>Library</title>
-</head>
-<body>
-    <form action="" id="myForm">
+  </head>
+  <body>
+    <div class="main">
+      <div class="left">
+        <form action="" id="myForm">
+          <label for="title"
+            >Title:
+            <input type="text" id="title" />
+          </label>
 
-        <label for="title">Title:</label>
-        <input type="text" id="title">
-        <br>
-        <br>
-        <label for="author">Author:</label>
-        <input type="text" id="author">
-        <br>
-        <br>
-        <label for="pages">Pages:</label>
-        <input type="number" id="pages">
-        <br>
-        <br>
-        <label for="read">Read:</label>
-        <input type="text" id="read">
-        <br>
-        <br>
-        <input type="submit" id="submit">
-    </form>
-    <br>
-    <br>
-    <div class="container">
+          <label for="author"
+            >Author:
+            <input type="text" id="author" />
+          </label>
 
+          <label for="pages"
+            >Pages:
+            <input type="number" id="pages" />
+          </label>
+
+          <label for="read"
+            >Read:
+            <input type="text" id="read" />
+          </label>
+
+          <input type="submit" id="submit" />
+        </form>
+      </div>
+
+      <div class="right">
+        <div class="container"></div>
+      </div>
     </div>
-</body>
-<script src="index.js"></script>
+  </body>
+  <script src="index.js"></script>
 </html>
