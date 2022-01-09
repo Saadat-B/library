@@ -5,6 +5,7 @@
 
 body {
   background-color: palegreen;
+  overflow: hidden;
 }
 
 .main {
@@ -21,6 +22,11 @@ body {
   width: 20em;
 }
 
+.right {
+  height: 97vh;
+  overflow-y: scroll;
+}
+
 #myForm {
   height: 40rem;
   width: 20rem;
@@ -31,8 +37,17 @@ body {
   padding: 10px;
 }
 
+.container {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
 .card {
-  margin: 10px;
+  border: 5px solid black;
+  height: 200px;
+  width: 200px;
+  padding: 5px;
 }
 
 #myForm > label {
