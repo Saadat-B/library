@@ -8,7 +8,6 @@ let newBook;
 let submit = document.querySelector("#submit");
 let card;
 const container = document.querySelector(".container");
-const myStorage = window.localStorage;
 let myBooks;
 
 
@@ -38,8 +37,8 @@ function log(e) {
 function display() {
   clear();
   
-  myStorage.setItem('books',JSON.stringify(myLibrary));
-  myBooks = JSON.parse(myStorage.getItem('books'));
+  localStorage.setItem('books',JSON.stringify(myLibrary));
+  myBooks = JSON.parse(localStorage.getItem('books'));
   console.log(myBooks)
 
   if(myBooks && myBooks.length){
