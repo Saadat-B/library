@@ -1,19 +1,13 @@
-// DECLARATIONS
-let myLibrary = [];
-let title;
-let author;
-let pages;
-let read;
-let newBook;
-let submit = document.querySelector("#submit");
-let card;
-const container = document.querySelector(".container");
-let myBooks;
 
+// DECLARATIONS
+
+const submit = document.querySelector("#submit");
+const container = document.querySelector(".container");
 
 // FUNCTIONS
 
 function Book(title, author, pages, read) {
+  // Object Constructor to create new books
   this.title = title;
   this.author = author;
   this.pages = pages;
@@ -24,39 +18,44 @@ function Book(title, author, pages, read) {
 }
 
 function log(e) {
-  title = document.querySelector("#title").value;
-  author = document.querySelector("#author").value;
-  pages = document.querySelector("#pages").value;
-  read = document.querySelector("#read").value;
+  // Adds the newly created book into local storage
+  let title = document.querySelector("#title").value;
+  let author = document.querySelector("#author").value;
+  let pages = document.querySelector("#pages").value;
+  let read = document.querySelector("#read").value;
+  if (localStorage.getItem("books") == null) {
+    localStorage.setItem("books", "[]");
+  }
+  let myLibrary = JSON.parse(localStorage.getItem("books"));
   myLibrary.push(new Book(title, author, pages, read));
+  localStorage.setItem("books", JSON.stringify(myLibrary));
   display();
   reset();
   e.preventDefault();
 }
 
 function display() {
-  clear();
-  
-  localStorage.setItem('books',JSON.stringify(myLibrary));
-  myBooks = JSON.parse(localStorage.getItem('books'));
-  console.log(myBooks)
-
-  if(myBooks && myBooks.length){
-
+  // Renders the book stored in the local storage
+  if (localStorage.getItem("books") !== null) {
+    clear();
+    let card;
+    let myBooks = JSON.parse(localStorage.getItem("books"));
     for (let i = 0; i < myBooks.length; i++) {
       card = document.createElement("div");
-      // card.innerText = myBooks[i].info();
-      card.innerText = `${myBooks[i]['title']} by ${myBooks[i]['author']}, ${myBooks[i]['pages']} pages, ${myBooks[i]['read']}`
+      card.innerText = `${myBooks[i]["title"]} by ${myBooks[i]["author"]}, ${myBooks[i]["pages"]} pages, ${myBooks[i]["read"]}`;
       container.appendChild(card);
     }
   }
 }
 
+
 function clear() {
+  // Clears the container in the DOM for Re-rendering the page with additional books if added
   container.innerHTML = "";
 }
 
 function reset() {
+  // Resets the HTML Book Form after submission
   document.getElementById("myForm").reset();
 }
 
@@ -64,3 +63,7 @@ function reset() {
 // EVENT LISTENERS
 
 submit.addEventListener("click", log);
+
+// CALLING FUNCTIONS ON PAGE LOAD
+
+display();
