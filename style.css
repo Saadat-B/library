@@ -48,6 +48,32 @@ body {
   height: 200px;
   width: 200px;
   padding: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.info {
+  border: 1px red solid;
+}
+.edit {
+  border: 1px blue solid;
+  display: flex;
+  justify-content: end;
+  gap: 10px;
+}
+
+.update {
+  border: 2px solid white;
+  border-radius: 30px;
+  padding: 5px;
+  background-color: grey;
+}
+.del {
+  border: 2px solid white;
+  border-radius: 30px;
+  padding: 5px;
+  background-color: grey;
 }
 
 #myForm > label {

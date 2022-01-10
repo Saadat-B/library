@@ -38,12 +38,30 @@ function display() {
   if (localStorage.getItem("books") !== null) {
     clear();
     let card;
+    let edit;
+    let update;
+    let del;
+    let info;
     let myBooks = JSON.parse(localStorage.getItem("books"));
     for (let i = 0; i < myBooks.length; i++) {
       card = document.createElement("div");
       card.classList.add("card");
-      card.innerText = `${myBooks[i]["title"]} by ${myBooks[i]["author"]}, ${myBooks[i]["pages"]} pages, ${myBooks[i]["read"]}`;
+      edit = document.createElement("div");
+      edit.classList.add("edit");
+      info = document.createElement("div");
+      info.classList.add("info");
+      update = document.createElement("span");
+      update.classList.add("update");
+      update.innerText = `✏️`;
+      del = document.createElement("span");
+      del.classList.add("del");
+      del.innerText = `❌`;
+      info.innerText = `${myBooks[i]["title"]} by ${myBooks[i]["author"]}, ${myBooks[i]["pages"]} pages, ${myBooks[i]["read"]}`;
       container.appendChild(card);
+      card.appendChild(edit);
+      card.appendChild(info);
+      edit.appendChild(update);
+      edit.appendChild(del);
     }
   }
 }
