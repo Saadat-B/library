@@ -42,6 +42,7 @@ function display() {
     let update;
     let del;
     let info;
+    let delet;
 
     let myBooks = JSON.parse(localStorage.getItem("books"));
     for (let i = 0; i < myBooks.length; i++) {
@@ -71,6 +72,27 @@ function display() {
       edit.appendChild(update);
       edit.appendChild(del);
     }
+    delet = document.querySelectorAll(".del");
+    // delet.forEach((elem) => {
+    //   for (let i = 0; i < myBooks.length; i++) {
+    //     elem.dataset.num = i;
+    //   }
+    // });
+
+    for (let i = 0; i < delet.length; i++) {
+      delet[i].dataset.num = i;
+    }
+
+    delet.forEach((elem) =>
+      elem.addEventListener("click", (e) => {
+        console.log(elem.dataset.num);
+        let index = elem.dataset.num;
+        let Library = JSON.parse(localStorage.getItem("books"));
+        Library.splice(index, 1);
+        localStorage.setItem("books", JSON.stringify(Library));
+        display();
+      })
+    );
   }
 }
 
