@@ -42,6 +42,7 @@ function display() {
     let update;
     let del;
     let info;
+
     let myBooks = JSON.parse(localStorage.getItem("books"));
     for (let i = 0; i < myBooks.length; i++) {
       card = document.createElement("div");
@@ -57,6 +58,13 @@ function display() {
       del.classList.add("del");
       del.innerText = `❌`;
       info.innerText = `${myBooks[i]["title"]} by ${myBooks[i]["author"]}, ${myBooks[i]["pages"]} pages, ${myBooks[i]["read"]}`;
+      info.innerHTML = `<p> ${myBooks[i]["title"]} </p>
+      <p>by</p>
+      <p>${myBooks[i]["author"]}</p>
+      <p>${myBooks[i]["pages"]} pages</p>
+      <p>${myBooks[i]["read"]}</p>
+
+      `;
       container.appendChild(card);
       card.appendChild(edit);
       card.appendChild(info);
@@ -79,6 +87,7 @@ function reset() {
 // EVENT LISTENERS
 
 submit.addEventListener("click", log);
+// delet.forEach((elem) => elem.addEventListener("click", console.log("del")));
 
 // CALLING FUNCTIONS ON PAGE LOAD
 
