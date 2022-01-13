@@ -2,7 +2,8 @@
 
 const submit = document.querySelector("#submit");
 const container = document.querySelector(".container");
-
+const addBookBtn = document.querySelector("#addBook");
+const form = document.querySelector("#myForm");
 // FUNCTIONS
 
 function Book(title, author, pages, read) {
@@ -18,10 +19,16 @@ function Book(title, author, pages, read) {
 
 function log(e) {
   // Adds the newly created book into local storage
+  form.style.visibility = "hidden";
   let title = document.querySelector("#title").value;
   let author = document.querySelector("#author").value;
   let pages = document.querySelector("#pages").value;
-  let read = document.querySelector("#read").value;
+  let read = document.querySelector("#read");
+  if (read.checked) {
+    read = "Read";
+  } else {
+    read = "Not Read";
+  }
   if (localStorage.getItem("books") == null) {
     localStorage.setItem("books", "[]");
   }
@@ -109,6 +116,9 @@ function reset() {
 // EVENT LISTENERS
 
 submit.addEventListener("click", log);
+addBookBtn.addEventListener("click", () => {
+  form.style.visibility = "visible";
+});
 // delet.forEach((elem) => elem.addEventListener("click", console.log("del")));
 
 // CALLING FUNCTIONS ON PAGE LOAD

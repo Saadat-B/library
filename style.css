@@ -28,6 +28,7 @@ body {
 }
 
 #myForm {
+  visibility: hidden;
   height: 40rem;
   width: 20rem;
   display: flex;
@@ -67,6 +68,7 @@ body {
 }
 .edit {
   /* border: 1px blue solid; */
+  cursor: pointer;
   display: flex;
   justify-content: end;
   gap: 10px;
@@ -79,6 +81,7 @@ body {
   background-color: grey;
 }
 .del {
+  cursor: pointer;
   border: 2px solid white;
   border-radius: 30px;
   padding: 5px;
